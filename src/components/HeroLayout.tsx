@@ -22,10 +22,10 @@ const HeroLayout = () => {
         className="pt-32 text-center font-bold"
         color="black"
       >
-        The Web3 Domain Registrar
+        e t h e r m a i n
       </Text>
       <Text fontSize="xl" className="text-center font-bold mb-4 text-slate-500">
-        The right platform for you to host a domain name with ease.
+        register, buy, sell, and manage onchain web domains
       </Text>
       <div className="w-1/3 flex-col mx-auto items-center justify-center place-content-center">
         <button className="w-full bg-transparent rounded-lg border-2 border-slate-500 p-4 text-lg font-semibold text-slate-500 my-4"
