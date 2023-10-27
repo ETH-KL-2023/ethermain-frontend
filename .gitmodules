@@ -1,0 +1,6 @@
+[submodule "ethermain-readme"]
+	path = ethermain-readme
+	url = https://github.com/ETH-KL-2023/ethermain-readme
+[submodule "ethermain-smart-contract"]
+	path = ethermain-smart-contract
+	url = https://github.com/ETH-KL-2023/ethermain-smart-contract
