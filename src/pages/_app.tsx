@@ -1,45 +1,37 @@
 import "@/styles/globals.css";
 import { RainbowKitProvider, getDefaultWallets } from "@rainbow-me/rainbowkit";
 import type { AppProps } from "next/app";
-import {
-  sepolia,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  zora,
-  lineaTestnet,
-  mantleTestnet,
-  Chain,
-  localhost,
-  polygonMumbai,
-  taikoJolnir,
-} from "viem/chains";
-import { configureChains, mainnet, createConfig, WagmiConfig } from "wagmi";
-import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
+import { sepolia, mantleTestnet, localhost, polygonMumbai } from "viem/chains";
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import "@rainbow-me/rainbowkit/styles.css";
 import { ChakraProvider } from "@chakra-ui/react";
+import { publicProvider } from 'wagmi/providers/public';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
+
+
 
 export default function App({ Component, pageProps }: AppProps) {
   const { chains, publicClient } = configureChains(
-    [taikoJolnir, mantleTestnet, polygonMumbai, localhost],
+    [sepolia, mantleTestnet, polygonMumbai, localhost],
     [
-      // //Mantle
-      // jsonRpcProvider({
-      //   rpc: chain => ({
-      //     http: `https://rpc.testnet.mantle.xyz`,
-      //   }),
-      // }),
-      
-      //Taiko
-      jsonRpcProvider({
-        rpc: (chain) => ({
-          http: `https://rpc.jolnir.taiko.xyz`,
-        }),
-      }),
+      publicProvider()
     ]
+
+    // [
+    //   // //Mantle
+    //   // jsonRpcProvider({
+    //   //   rpc: chain => ({
+    //   //     http: `https://rpc.testnet.mantle.xyz`,
+    //   //   }),
+    //   // }),
+    //   // //Taiko
+    //   // jsonRpcProvider({
+    //   //   rpc: (chain) => ({
+    //   //     http: `https://rpc.jolnir.taiko.xyz`,
+    //   //   }),
+    //   // }),
+    // ]
   );
 
   const { connectors } = getDefaultWallets({
@@ -64,3 +56,8 @@ export default function App({ Component, pageProps }: AppProps) {
     </WagmiConfig>
   );
 }
+
+
+
+
+
