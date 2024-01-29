@@ -9,7 +9,7 @@ const HeroLayout = () => {
     router.push('/RegisterDomain');
   }
   const handleMarketplaceRoute = () => {
-    router.push('/Marketplace');
+    router.push('/NewMarketplace');
   }
   const handleProfileRoute = () => {
     router.push('/Profile');
