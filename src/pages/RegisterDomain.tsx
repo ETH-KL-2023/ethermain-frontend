@@ -23,17 +23,18 @@ function RegisterDomain() {
   };
 
   const handleSearchButtonClick = () => {
-    setSearchValue(inputValue);
-    setSearchButtonClicked(true);
+    // setSearchValue(inputValue);
+    // setSearchButtonClicked(true);
+    handleRegisterButtonClick();
   };
 
   const handleRegisterButtonClick = () => {
-    router.push(`/ConfirmRegister/${searchValue}`);
+    router.push(`/ConfirmRegister/${inputValue}`);
   };
 
-  const handleBuyButtonClick = () => {
-    router.push("/Marketplace");
-  };
+  // const handleBuyButtonClick = () => {
+  //   router.push("/Marketplace");
+  // };
 
   return (
     <div className="h-screen bg-gradient-to-r from-blue-100 via-pink-100 to-purple-100">
@@ -53,88 +54,91 @@ function RegisterDomain() {
             <AiOutlineSearch className="text-3xl text-slate-400" />
           </button>
         </div>
-        {searchButtonClicked == true && (
-          <Card className="w-7/12 mt-8 p-8 mx-auto justify-center" variant="">
-            <h1 className="text-2xl font-semibold text-center justify-center">
-              UNAVAILABLE
-            </h1>
-            <div className="flex mt-8">
-              <h1 className="ml-4 text-lg text-left font-semibold mr-4 mt-1">
-                {searchValue + ".emn"}
+
+        <>
+          {/* {searchButtonClicked == true && (
+            <Card className="w-7/12 mt-8 p-8 mx-auto justify-center" variant="">
+              <h1 className="text-2xl font-semibold text-center justify-center">
+                UNAVAILABLE
               </h1>
-              <div className="relative inline-block">
-                <button
-                  onMouseEnter={() => setShowOwner1(true)}
-                  onMouseLeave={() => setShowOwner1(false)}
-                >
-                  <BsFillPersonFill className="text-3xl text-black mr-16" />
-                </button>
-                {showOwner1 && (
-                  <div className="absolute z-10 top-0 left-0 -mt-44 -ml-16">
-                    <OwnerCard
-                      domainName={searchValue + ".emn"}
-                      ownerAddress="0xawfj90jf0aw9h03"
-                      expiryDate="13/10/2024"
-                    />
-                  </div>
-                )}
+              <div className="flex mt-8">
+                <h1 className="ml-4 text-lg text-left font-semibold mr-4 mt-1">
+                  {searchValue + ".emn"}
+                </h1>
+                <div className="relative inline-block">
+                  <button
+                    onMouseEnter={() => setShowOwner1(true)}
+                    onMouseLeave={() => setShowOwner1(false)}
+                  >
+                    <BsFillPersonFill className="text-3xl text-black mr-16" />
+                  </button>
+                  {showOwner1 && (
+                    <div className="absolute z-10 top-0 left-0 -mt-44 -ml-16">
+                      <OwnerCard
+                        domainName={searchValue + ".emn"}
+                        ownerAddress="0xawfj90jf0aw9h03"
+                        expiryDate="13/10/2024"
+                      />
+                    </div>
+                  )}
+                </div>
+                <Input
+                  className="w-1/6 ml-96 text-sm font-medium text-center"
+                  htmlSize={8}
+                  width="auto"
+                  variant="filled"
+                  placeholder="Not Listed"
+                  readOnly
+                />
               </div>
-              <Input
-                className="w-1/6 ml-96 text-sm font-medium text-center"
-                htmlSize={8}
-                width="auto"
-                variant="filled"
-                placeholder="Not Listed"
-                readOnly
-              />
-            </div>
-            <Divider colorScheme="gray" className="my-4 mb-32" />
-            <h1 className="text-2xl font-semibold text-center justify-center">
-              AVAILABLE
-            </h1>
-            <div className="flex mt-8">
-              <h1 className="ml-4 text-lg text-left font-semibold mr-20 mt-1">
-                {searchValue + "123.emn"}
+              <Divider colorScheme="gray" className="my-4 mb-32" />
+              <h1 className="text-2xl font-semibold text-center justify-center">
+                AVAILABLE
               </h1>
-              <button
-                className="w-1/6 ml-96 px-3 p-2 text-md font-medium text-white text-center bg-slate-500 rounded-lg"
-                onClick={handleRegisterButtonClick}
-              >
-                Register Now
-              </button>
-            </div>
-            <Divider colorScheme="gray" className="my-4" />
-            <div className="flex mt-8">
-              <h1 className="ml-4 text-lg text-left font-semibold mr-4 mt-1">
-                {searchValue + "cool.emn"}
-              </h1>
-              <div className="relative inline-block">
+              <div className="flex mt-8">
+                <h1 className="ml-4 text-lg text-left font-semibold mr-20 mt-1">
+                  {searchValue + "123.emn"}
+                </h1>
                 <button
-                  onMouseEnter={() => setShowOwner2(true)}
-                  onMouseLeave={() => setShowOwner2(false)}
+                  className="w-1/6 ml-96 px-3 p-2 text-md font-medium text-white text-center bg-slate-500 rounded-lg"
+                  onClick={handleRegisterButtonClick}
                 >
-                  <BsFillPersonFill className="text-3xl text-black mr-7" />
+                  Register Now
                 </button>
-                {showOwner2 && (
-                  <div className="absolute z-10 top-0 left-0 -mt-44 -ml-16">
-                    <OwnerCard
-                      domainName={searchValue + "cool.emn"}
-                      ownerAddress="0xui7awjk89awd"
-                      expiryDate="13/10/2025"
-                    />
-                  </div>
-                )}
               </div>
-              <button
-                className="w-1/6 ml-96 px-3 p-2 text-md font-medium text-white text-center bg-slate-500 rounded-lg"
-                onClick={handleBuyButtonClick}
-              >
-                Buy Now
-              </button>
-            </div>
-            <Divider colorScheme="gray" className="my-4" />
-          </Card>
-        )}
+              <Divider colorScheme="gray" className="my-4" />
+              <div className="flex mt-8">
+                <h1 className="ml-4 text-lg text-left font-semibold mr-4 mt-1">
+                  {searchValue + "cool.emn"}
+                </h1>
+                <div className="relative inline-block">
+                  <button
+                    onMouseEnter={() => setShowOwner2(true)}
+                    onMouseLeave={() => setShowOwner2(false)}
+                  >
+                    <BsFillPersonFill className="text-3xl text-black mr-7" />
+                  </button>
+                  {showOwner2 && (
+                    <div className="absolute z-10 top-0 left-0 -mt-44 -ml-16">
+                      <OwnerCard
+                        domainName={searchValue + "cool.emn"}
+                        ownerAddress="0xui7awjk89awd"
+                        expiryDate="13/10/2025"
+                      />
+                    </div>
+                  )}
+                </div>
+                <button
+                  className="w-1/6 ml-96 px-3 p-2 text-md font-medium text-white text-center bg-slate-500 rounded-lg"
+                  onClick={handleBuyButtonClick}
+                >
+                  Buy Now
+                </button>
+              </div>
+              <Divider colorScheme="gray" className="my-4" />
+            </Card>
+          )} */}
+        </>
       </div>
     </div>
   );

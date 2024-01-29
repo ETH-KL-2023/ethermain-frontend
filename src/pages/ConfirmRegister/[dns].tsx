@@ -7,24 +7,24 @@ import DropdownButton from "@/components/DropdownButton";
 import { getSupabase } from "@/shared/utils";
 import { useAccount, useContractWrite, usePrepareContractWrite } from "wagmi";
 import { parseEther } from "viem";
-import abiiRegistry from "../../../abiiRegistry.json"
+import abiiRegistry from "../../../abiiRegistry.json";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 import { REGISTRY_CONTRACT_ADDRESS } from "../../../globalvar";
 import { LISTING_CONTRACT_ADDRESS } from "../../../globalvar";
 
-function ConfirmRegistration () {
+function ConfirmRegistration() {
   const [selectedItem, setSelectedItem] = useState("Duration");
   const [price, setPrice] = useState(0);
   const [registrarPrice, setRegistrarPrice] = useState(0.005);
   const [subtotalPrice, setSubtotalPrice] = useState(0.005);
-  const [expiryDate, setExpiryDate] = useState('dd/mm/yy'); 
+  const [expiryDate, setExpiryDate] = useState("dd/mm/yy");
 
   const formatDate = (date: Date) => {
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
@@ -33,10 +33,11 @@ function ConfirmRegistration () {
   const { dns } = router.query;
 
   useEffect(() => {
-    if (router.isReady) { // ensures dns value is available
-        setdnsName(dns ? dns + "123.emn" : "defaultvalue.emn"); // you can set a default value if dns is not available for any reason
+    if (router.isReady) {
+      // ensures dns value is available
+      setdnsName(dns ? dns + ".emn" : "defaultvalue.emn"); // you can set a default value if dns is not available for any reason
     }
-}, [router.isReady, dns]);
+  }, [router.isReady, dns]);
 
   // useEffect(() => {
   //   const TotalPrice = price + registrarPrice;
@@ -100,7 +101,6 @@ function ConfirmRegistration () {
   //////////////////////////////////////////////////////////////////////////////////////////
   const { address, isConnecting, isDisconnected } = useAccount();
 
-
   const [dnsName, setdnsName] = useState<string>(dns + "123.emn"); // INPUT HARD CODE DI SINI
   const [time, setTime] = useState<string>("1"); // INPUT HARD CODE DI SINI
 
@@ -110,14 +110,14 @@ function ConfirmRegistration () {
   const { config } = usePrepareContractWrite({
     // address: process.env.REGISTRY_CONTRACT as `0x${string}`,
 
-    address:REGISTRY_CONTRACT_ADDRESS,
+    address: REGISTRY_CONTRACT_ADDRESS,
 
     abi: abiiRegistry,
     functionName: "registerDNS",
     value: parseEther(subtotalPrice.toString()),
     args: [dnsName, time],
     onError(error) {
-      console.log("Error:", error)
+      console.log("Error:", error);
     },
     onSuccess(data) {
       console.log("Success", data);
